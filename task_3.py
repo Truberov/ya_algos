@@ -1,18 +1,19 @@
 def main():
     arr = list(map(int, input().strip().split()))
-    i = 1
-    while i <= len(arr) - 1:
-        elem_to_move = arr.pop(len(arr) - 1)
-        for j in range(i):
-            if elem_to_move < arr[j]:
-                pos = 0 if j == 0 else j
-                arr.insert(pos, elem_to_move)
-                break
-            if j == i - 1:
-                arr.insert(j, elem_to_move)
-        i += 1
+    arr_2 = []
 
-    print(arr)
+    for _ in range(len(arr)):
+        elem_to_move = arr.pop()
+        for i in range(len(arr_2)):
+            if elem_to_move < arr_2[i]:
+                arr_2.insert(i, elem_to_move)
+                break
+            if i == len(arr_2) - 1:
+                arr_2.insert(i + 1, elem_to_move)
+        if len(arr_2) == 0:
+            arr_2.insert(-1, elem_to_move)
+
+    print(arr_2)
 
 
 if __name__ == "__main__":
